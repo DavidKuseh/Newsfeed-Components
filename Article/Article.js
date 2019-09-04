@@ -112,3 +112,50 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function newsFeed ( {title, date, firstParagraph, secondParagraph, thirdParagraph} ) {
+  const div1 = document.createElement('div');
+  const h2 = document.createElement('h2');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  const p3 = document.createElement('p');
+  const p4 = document.createElement('p');
+  const span1 = document.createElement('span');
+
+  //classes
+  div1.classList.add('article');
+  p1.classList.add('date');
+  span1.classList.add('expandButton');
+
+  h2.textContent = title;
+  p1.textContent = date;
+  p2.textContent = firstParagraph;
+  p3.textContent = secondParagraph;
+  p4.textContent = thirdParagraph;
+  span1.textContent = 'Button';
+
+  //append
+  div1.appendChild(h2);
+  div1.appendChild(p1);
+  div1.appendChild(p2);
+  div1.appendChild(p3);
+  div1.appendChild(p4);
+  div1.appendChild(span1);
+
+  //span
+  document.querySelector('span');
+
+  span1.addEventListener('click', () => {
+    div1.classList.toggle('article-open');
+  })
+  return div1;
+}
+
+const newsTest = data.map(newsFeed);
+console.log(newsTest);
+
+const news1 = document.querySelector('.articles');
+
+newsTest.forEach(e => {
+  news1.appendChild(e);
+})
