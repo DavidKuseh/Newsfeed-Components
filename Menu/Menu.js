@@ -33,33 +33,34 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
-function newsFeedMenu([arr]){
+
+function newsMenu(arr1){
   const div2 = document.createElement('div');
-  const unorderedList = document.createElement('ul');
+  const ul = document.createElement('ul');
 
-  div2.classList.add("menu");
+  div2.classList.add('menu','menu--open');
 
-  unorderedList.textContent = menuItems;
+  arr1.forEach((element) => {
+    const list = document.createElement('li');
+    list.textContent = element;
+    ul.appendChild(list);
+  });
+  
+  const button = document.querySelector('.menu-button');
 
-  const listItems = arr.map(element => {
-    const item = document.createElement('li');
-    item.textContent = element;
-    unorderedList.appendChild(item);
+  button.addEventListener('click', () => {
+    div2.classList.toggle('menu--open');
   })
 
-  document.querySelector('.menu-button');
+  const menuTest = document.querySelector('.header');
+  menuTest.appendChild(div2);
+  div2.appendChild(ul);
 
-  div2.addEventListener('click', e => {
-    e.classList.toggle('.menu--button');
-  })
-
-  return div2;
+  return button;
 }
+(newsMenu(menuItems));
 
 
-const myMenu = document.querySelector('img');
-
-myMenu.appendChild();
 
 
 
